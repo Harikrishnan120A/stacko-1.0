@@ -22,7 +22,7 @@ const team: TeamMember[] = [
     title: "Co-Founder & Software Engineer",
     specialty: "Full-stack Development & Product Strategy",
     bio: "Co-founder driving product vision and building scalable software solutions for complex challenges",
-    portfolio: "https://madhan-kumar-b.github.io/mkportfolio/",
+    portfolio: "https://madhankumar1000.github.io/portfoliomk/",
   },
   {
     id: 3,

@@ -21,13 +21,20 @@ import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/NotFound";
 import { Route, Routes } from "react-router-dom";
 import { useAnalytics, usePerformanceTracking } from "@/hooks/useAnalytics";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { PageSkeleton } from "@/components/LoadingStates";
+import { initMobileOptimizations, enhanceScrollSnap } from "@/utils/mobile";
 
 const AppContent = () => {
   // Initialize analytics and performance tracking
   useAnalytics();
   usePerformanceTracking();
+  
+  // Initialize mobile optimizations
+  useEffect(() => {
+    initMobileOptimizations();
+    enhanceScrollSnap();
+  }, []);
   
   return (
     <div className="bg-black text-white">

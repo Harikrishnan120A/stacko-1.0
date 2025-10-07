@@ -25,11 +25,11 @@ const Footer = () => {
             STACKO teaches modern web development through hands-on courses and provides professional development services.
           </p>
           <div className="flex flex-wrap items-center text-small" style={{ gap: '16px', color: 'var(--color-text-secondary)' }}>
-            <a className="transition hover:text-white" href="mailto:hello@stacko.dev">
-              hello@stacko.dev
+            <a className="transition hover:text-white" href="mailto:stackoindustries@gmail.com">
+              stackoindustries@gmail.com
             </a>
             <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)' }} />
-            <p>+1 (415) 555-STACK</p>
+            <p>+91 9751987380</p>
           </div>
         </div>
 

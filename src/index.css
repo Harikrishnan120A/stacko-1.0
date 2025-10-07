@@ -486,10 +486,23 @@ body {
     justify-content: center;
   }
 
+  /* Hero Section Specific Fixes */
   .hero-code-block {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    overflow: hidden; /* Prevent content from overflowing */
+  }
+
+  /* Ensure Hero section elements are properly contained */
+  section.relative.isolate {
+    overflow-x: hidden;
+  }
+
+  /* Fix for trust indicators to prevent cutoff */
+  .hero-trust-section {
+    width: 100%;
+    overflow: visible;
   }
 
   /* Stats Consistency */
@@ -562,6 +575,12 @@ body {
       padding-right: 40px;
     }
 
+    /* Improve Hero layout on tablets */
+    .grid.lg\\:grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 60px !important;
+    }
+
     .grid-courses,
     .grid-testimonials {
       grid-template-columns: repeat(2, 1fr);
@@ -604,6 +623,12 @@ body {
     .section-padding {
       padding-top: 64px;
       padding-bottom: 64px;
+    }
+
+    /* Fix Hero layout on mobile */
+    .grid.lg\\:grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 40px !important;
     }
 
     .grid-courses,

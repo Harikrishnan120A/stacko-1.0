@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface TrailPoint {
   x: number;
@@ -8,11 +8,12 @@ interface TrailPoint {
   timestamp: number;
 }
 
-export default function MouseTrail() {
+const MouseTrail = React.memo(() => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trailPoints = useRef<TrailPoint[]>([]);
   const animationFrameId = useRef<number | undefined>(undefined);
   const isEnabled = useRef(true);
+  const lastMouseTime = useRef(0);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -41,14 +42,19 @@ export default function MouseTrail() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isEnabled.current) return;
       
+      // Throttle mouse events to improve performance
+      const now = Date.now();
+      if (now - lastMouseTime.current < 16) return; // ~60fps
+      lastMouseTime.current = now;
+      
       trailPoints.current.push({
         x: e.clientX,
         y: e.clientY,
-        timestamp: Date.now(),
+        timestamp: now,
       });
       
-      // Keep only the last 50 points for performance
-      if (trailPoints.current.length > 50) {
+      // Keep only the last 30 points for better performance
+      if (trailPoints.current.length > 30) {
         trailPoints.current.shift();
       }
     };
@@ -165,4 +171,7 @@ export default function MouseTrail() {
       aria-hidden="true"
     />
   );
-}
+});
+
+MouseTrail.displayName = 'MouseTrail';
+export default MouseTrail;

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const floatingShapes = [
   {
     size: "48rem",
@@ -25,7 +27,7 @@ const floatingShapes = [
   },
 ];
 
-const Background = () => {
+const Background = React.memo(() => {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-50 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(107,70,193,0.14),_transparent_58%),_radial-gradient(circle_at_bottom,_rgba(139,92,246,0.12),_transparent_60%),_#000000]" />
@@ -59,6 +61,7 @@ const Background = () => {
       </div>
     </div>
   );
-};
+});
 
+Background.displayName = 'Background';
 export default Background;

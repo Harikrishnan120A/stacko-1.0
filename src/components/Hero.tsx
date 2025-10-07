@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -14,16 +15,16 @@ const partnerSignals = [
   { value: "$47K", label: "Average salary lift" },
 ];
 
-const Hero = () => {
+const Hero = React.memo(() => {
   return (
-    <section className="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,#2E1D57_0%,#06070C_68%)] section-padding">
+    <section className="relative isolate overflow-x-hidden bg-[radial-gradient(circle_at_top,#2E1D57_0%,#06070C_68%)] section-padding">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(139,92,246,0.22),transparent_65%)]" />
         <div className="absolute -top-24 -left-12 h-72 w-72 rounded-full bg-gradient-to-br from-purple-600/35 to-indigo-600/10 blur-3xl" />
         <div className="absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-gradient-to-tr from-indigo-500/25 to-transparent blur-[140px]" />
       </div>
 
-      <div className="page-shell grid lg:grid-cols-2 items-stretch" style={{ gap: '80px' }}>
+      <div className="page-shell grid lg:grid-cols-2 items-stretch gap-8 lg:gap-20 xl:gap-24">
         <div style={{ maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.span
             initial={{ opacity: 0, y: 16 }}
@@ -39,7 +40,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ fontSize: '64px', fontWeight: 800, lineHeight: '1.1', letterSpacing: '-0.03em', marginBottom: '24px' }}
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+            style={{ fontWeight: 800, lineHeight: '1.1', letterSpacing: '-0.03em', marginBottom: '24px' }}
           >
             Learn modern web development from expert developers
           </motion.h1>
@@ -57,13 +59,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.9, ease: "easeOut" }}
-            className="flex flex-wrap items-center"
-            style={{ gap: '16px', marginBottom: '64px' }}
+            className="flex flex-wrap items-center gap-4 mb-12 lg:mb-16"
           >
-            <Link to="/signup" className="btn btn-primary" style={{ padding: '16px 32px', fontSize: '16px' }}>
+            <Link to="/signup" className="btn btn-primary px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base">
               Start Learning
             </Link>
-            <Link to="/services" className="btn btn-secondary" style={{ padding: '16px 32px', fontSize: '16px' }}>
+            <Link to="/services" className="btn btn-secondary px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base">
               View Services
             </Link>
           </motion.div>
@@ -72,23 +73,22 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.9, ease: "easeOut" }}
-            className="grid grid-cols-1 sm:grid-cols-3"
-            style={{ gap: '24px' }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             {partnerSignals.map((signal) => (
               <div
                 key={signal.label}
                 className="card text-center"
-                style={{ padding: '32px 24px' }}
+                style={{ padding: '24px 16px' }}
               >
-                <p className="text-gradient" style={{ fontSize: '48px', fontWeight: 800, lineHeight: 1, marginBottom: '12px' }}>{signal.value}</p>
+                <p className="text-gradient text-3xl sm:text-4xl lg:text-5xl" style={{ fontWeight: 800, lineHeight: 1, marginBottom: '12px' }}>{signal.value}</p>
                 <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: 1.4 }}>{signal.label}</p>
               </div>
             ))}
           </motion.div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="flex flex-col gap-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,33 +112,11 @@ const Hero = () => {
               </p>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-lg shadow-xl transition-all duration-300 hover:border-white/15"
-          >
-            <p className="text-xs uppercase tracking-[0.32em] text-secondary-500 font-bold">Trusted by product & engineering leaders</p>
-            <div className="mt-6 grid gap-3 text-sm text-white/70">
-              <div className="flex items-center justify-between rounded-2xl bg-white/4 px-5 py-4 border border-white/5 transition-all duration-300 hover:bg-white/8 hover:border-white/10">
-                <span className="text-white font-medium">Velocity playbooks delivered</span>
-                <span className="font-bold text-white text-base">60+</span>
-              </div>
-              <div className="flex items-center justify-between rounded-2xl bg-white/4 px-5 py-4 border border-white/5 transition-all duration-300 hover:bg-white/8 hover:border-white/10">
-                <span className="text-white font-medium">Sprint-to-launch timeline</span>
-                <span className="font-bold text-white text-base">6 weeks</span>
-              </div>
-              <div className="flex items-center justify-between rounded-2xl bg-white/4 px-5 py-4 border border-white/5 transition-all duration-300 hover:bg-white/8 hover:border-white/10">
-                <span className="text-white font-medium">Live mentor hours per cohort</span>
-                <span className="font-bold text-white text-base">40+</span>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
   );
-};
+});
 
+Hero.displayName = 'Hero';
 export default Hero;

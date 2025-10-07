@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+﻿import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import team from "@/data/team";
@@ -64,13 +64,13 @@ const mentorRoles: Record<number, string> = {
 };
 
 const mentorExperience: Record<number, string> = {
-  1: "8+ years",
-  2: "10+ years",
-  3: "7+ years", 
-  4: "6+ years",
-  5: "9+ years",
-  6: "5+ years",
-  7: "6+ years",
+  1: "1-2 years",
+  2: "1-2 years",
+  3: "1-2 years", 
+  4: "1-2 years",
+  5: "1-2 years",
+  6: "1-2 years",
+  7: "1-2 years",
 };
 
 const toSpecialtyTokens = (value: string) =>
@@ -79,7 +79,7 @@ const toSpecialtyTokens = (value: string) =>
     .map((token) => token.trim())
     .filter(Boolean);
 
-const TeamShowcase = () => {
+const TeamShowcase = React.memo(() => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
 
@@ -106,6 +106,7 @@ const TeamShowcase = () => {
     };
   }, []);
 
+  // Optimized scroll calculation with throttling
   const computeActiveCard = useCallback(() => {
     const node = sliderRef.current;
     if (!node) return;
@@ -443,8 +444,9 @@ const TeamShowcase = () => {
       </div>
     </section>
   );
-};
+});
 
+TeamShowcase.displayName = 'TeamShowcase';
 export default TeamShowcase;
 
 

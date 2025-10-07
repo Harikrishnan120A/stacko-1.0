@@ -101,7 +101,7 @@ const Contact = () => {
             </div>
             <div className="mt-10 rounded-2xl border border-secondary-500/30 bg-secondary-500/10 p-6 text-sm text-secondary-500">
               <p className="font-semibold">Direct line</p>
-              <p className="mt-2 text-white/85">hello@stacko.dev · +1 (415) 555-STACK</p>
+              <p className="mt-2 text-white/85">stackoindustries@gmail.com · +91 9751987380</p>
               <p className="mt-3 text-white/65">Response within 2 business days.</p>
             </div>
           </div>

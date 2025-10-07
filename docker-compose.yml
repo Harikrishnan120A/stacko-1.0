@@ -1,0 +1,46 @@
+services:
+  # Development service
+  stacko-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_DEV_SERVER_HOST=0.0.0.0
+    profiles:
+      - dev
+    restart: unless-stopped
+
+  # Production service with Nginx
+  stacko-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    profiles:
+      - prod
+    restart: unless-stopped
+
+  # Alternative production service on different port
+  stacko-prod-alt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    profiles:
+      - prod-alt
+    restart: unless-stopped

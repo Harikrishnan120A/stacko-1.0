@@ -22,14 +22,26 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     minify: 'terser',
+    target: 'es2015',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
-          animations: ['framer-motion']
-        }
+          animations: ['framer-motion'],
+          utils: ['src/utils/performance']
+        },
+        // Optimize chunk naming
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
       }
-    }
+    },
+    // Optimize bundle size
+    chunkSizeWarningLimit: 600
+  },
+  // Performance optimizations
+  esbuild: {
+    drop: ['console', 'debugger']
   }
 });

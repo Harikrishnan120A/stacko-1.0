@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist -r git@github.com:Harikrishnan120A/stacko-1.0.git"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",

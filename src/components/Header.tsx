@@ -41,7 +41,7 @@ const Header = () => {
         <Link to="/" className="group flex items-center" style={{ gap: '16px' }}>
           <div className="h-12 w-12 flex items-center justify-center flex-shrink-0">
             <img 
-              src="/stacko-final/stacko-logo.svg" 
+              src="/stacko-1.0/stacko-logo.svg" 
               alt="STACKO Logo" 
               className="h-full w-full object-contain transition-transform group-hover:scale-105"
             />
